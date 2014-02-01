@@ -56,9 +56,8 @@ CREATE TABLE Users (
 DROP TABLE IF EXISTS Rooms;
     
 CREATE TABLE Rooms (
-  roomId INT,
   roomName VARCHAR(25),
-  PRIMARY KEY (roomId, roomName)
+  PRIMARY KEY (roomName)
 );
 
 -- ---
@@ -78,8 +77,8 @@ CREATE TABLE Friends (
 -- ---
 
 ALTER TABLE Messages ADD FOREIGN KEY (userId) REFERENCES Users (userId);
--- ALTER TABLE Messages ADD FOREIGN KEY (roomName) REFERENCES Rooms (roomId);
--- ALTER TABLE Users ADD FOREIGN KEY (roomId) REFERENCES Rooms (roomId);
+ALTER TABLE Messages ADD FOREIGN KEY (roomName) REFERENCES Rooms (roomName);
+ALTER TABLE Users ADD FOREIGN KEY (roomName) REFERENCES Rooms (roomName);
 
 -- ---
 -- Table Properties
